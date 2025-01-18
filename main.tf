@@ -44,24 +44,12 @@ resource "aws_instance" "jenkins_instance" {
   key_name      = aws_key_pair.jenkins_key.key_name
   security_groups = [aws_security_group.jenkins_sg.name]
 
+  user_data = templatefile("./jenkins_configuration.sh", {})
+
   tags = {
     Name = "Jenkins-Server"
   }
-
-  # Provisioner for Jenkins installation
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get update -y",
-      "sudo apt-get install -y openjdk-17-jdk -y",
-      "sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian/jenkins.io-2023.key",
-      "echo 'deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]' https://pkg.jenkins.io/debian binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null",
-      "sudo apt-get update",
-      "sudo apt-get install jenkins",
-      "sudo systemctl start jenkins",
-      "sudo systemctl enable jenkins"
-    ]
-  }
-
+  
   # Connection details
   connection {
     type        = "ssh"
