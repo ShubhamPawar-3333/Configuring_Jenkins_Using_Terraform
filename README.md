@@ -60,3 +60,14 @@ You can now log into Jenkins and start configuring your pipelines and jobs.
 - **Easy to configure and customize**: The `variables.tf` file and the shell script (`jenkins_configuration.sh`) can be customized for specific use cases, allowing for flexible configurations.
 - **Infrastructure as Code (IaC)**: By using Terraform, the infrastructure is provisioned with code, ensuring consistency across deployments and enabling better version control and tracking.
 
+## **Important Note**
+
+⚠️ **Warning: Destroy Infrastructure After Use** ⚠️
+
+After the successful execution and setup of Jenkins, it is highly recommended to destroy the infrastructure to avoid incurring unnecessary costs, especially if you're using cloud providers like AWS, Azure, or GCP.
+
+To destroy the infrastructure, run the following Terraform command:
+
+```bash
+terraform destroy
+```
