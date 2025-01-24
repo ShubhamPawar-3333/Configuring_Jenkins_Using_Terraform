@@ -1,7 +1,7 @@
 # Jenkins Server Setup with Terraform & Shell Script
 
 This project automates the setup of a **Jenkins** server using **Terraform** for infrastructure provisioning and a custom **Shell Script** (`jenkins_configuration.sh`) to handle the Jenkins installation and configuration.
-![Jenkins Setup Diagram](images/jenkins-setup-diagram.png)
+![Jenkins Setup Diagram](images/Jenkins_setup_using_terraform.drawio.png)
 ---
 
 ## **Project Overview**
